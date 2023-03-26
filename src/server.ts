@@ -8,26 +8,26 @@ import dotenv from "dotenv";
 import notFound from "./middlewares/notFound";
 import errorHandler from "./middlewares/errorHandler";
 
-import apiV1 from "./api/v1";
+import apiV1 from "./routes/v1";
 
 dotenv.config();
 
-const app: Express = express();
+const server: Express = express();
 
-app.use(morgan("dev"));
-app.use(helmet());
-app.use(cors());
-app.use(express.json());
+server.use(morgan("dev"));
+server.use(helmet());
+server.use(cors());
+server.use(express.json());
 
-app.get("/", (req: Request, res: Response) => {
+server.get("/", (req: Request, res: Response) => {
   res.json({
     message: "Welcome to Resto API",
   });
 });
 
-app.use("/api/v1", apiV1);
+server.use("/api/v1", apiV1);
 
-app.use(notFound);
-app.use(errorHandler);
+server.use(notFound);
+server.use(errorHandler);
 
-export default app;
+export default server;

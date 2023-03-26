@@ -5,11 +5,17 @@ const prisma: PrismaClient = new PrismaClient();
 
 export default {
   async index(req: Request, res: Response) {
-    const query = await prisma.category.findMany();
+    try {
+      const query = await prisma.category.findMany();
 
-    res.status(200).json({
-      data: query,
-    });
+      res.status(200).json({
+        data: query,
+      });
+    } catch (error) {
+      return res.status(400).json({
+        message: "Bad Request",
+      });
+    }
   },
 
   async store(req: Request, res: Response) {
@@ -20,13 +26,13 @@ export default {
         },
       });
 
-      res.status(200).json({
-        message: "Success add category",
+      return res.status(200).json({
+        message: "Category created",
         data: category,
       });
     } catch (error) {
-      res.status(400).json({
-        message: "Failed to add category",
+      return res.status(400).json({
+        message: "Bad Request",
         error: error,
       });
     }

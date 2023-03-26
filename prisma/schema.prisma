@@ -8,10 +8,23 @@ datasource db {
 }
 
 model Category {
-    id        Int      @id @default(autoincrement())
-    name      String   @unique @db.VarChar(150)
-    createdAt DateTime @default(now()) @map("created_at")
-    updatedAt DateTime @updatedAt @map("updated_at")
+    id        Int       @id @default(autoincrement())
+    name      String    @unique @db.VarChar(150)
+    createdAt DateTime  @default(now()) @map("created_at")
+    updatedAt DateTime  @updatedAt @map("updated_at")
+    Products  Product[]
 
     @@map("categories")
+}
+
+model Product {
+    id         Int      @id @default(autoincrement())
+    name       String   @unique @db.Char(150)
+    price      Decimal  @db.Decimal()
+    category   Category @relation(fields: [categoryId], references: [id])
+    categoryId Int      @map("category_id")
+    createdAt  DateTime @default(now()) @map("created_at")
+    updatedAt  DateTime @updatedAt @map("updated_at")
+
+    @@map("products")
 }

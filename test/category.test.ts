@@ -1,10 +1,16 @@
 import request from "supertest";
+import app from "../src/server";
+import { Express } from "express-serve-static-core";
 
-import app from "../dist/src/app";
+let server: Express;
 
-describe("GET /api/v1", () => {
-  it("responds with a json message", async (done) => {
-    request(app)
+beforeAll(async () => {
+  server = app;
+});
+
+describe("GET /", () => {
+  it("responds with a json message", (done) => {
+    request(server)
       .get("/")
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
