@@ -1,8 +1,18 @@
+import bcrypt from "bcryptjs";
 import { PrismaClient } from "@prisma/client";
 const prisma: PrismaClient = new PrismaClient();
 
 async function main() {
-  const category = await prisma.category.createMany({
+  const userPassword = await bcrypt.hash("secret", 10);
+
+  await prisma.user.create({
+    data: {
+      username: "rizkhal",
+      password: userPassword,
+    },
+  });
+
+  await prisma.category.createMany({
     data: [{ name: "Desert" }, { name: "Food" }, { name: "Drink" }],
     skipDuplicates: true,
   });

@@ -5,10 +5,11 @@ import helmet from "helmet";
 import cors from "cors";
 import dotenv from "dotenv";
 
-import notFound from "./middlewares/notFound";
 import errorHandler from "./middlewares/errorHandler";
+import notFoundHandler from "./middlewares/notFoundHandler";
 
 import apiV1 from "./routes/v1";
+import auth from "./routes/auth";
 
 dotenv.config();
 
@@ -25,9 +26,10 @@ server.get("/", (req: Request, res: Response) => {
   });
 });
 
+server.use("/api/v1/auth", auth);
 server.use("/api/v1", apiV1);
 
-server.use(notFound);
 server.use(errorHandler);
+server.use(notFoundHandler);
 
 export default server;
