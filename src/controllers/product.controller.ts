@@ -20,7 +20,9 @@ export default {
 
       if (product) {
         Object.assign(filters, {
-          id: Number(product),
+          product: {
+            id: Number(product),
+          },
         });
       }
 
@@ -31,7 +33,7 @@ export default {
         where: filters,
       });
 
-      res.status(200).json({
+      return res.status(200).json({
         data: query,
       });
     } catch (error) {

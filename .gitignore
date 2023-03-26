@@ -1,6 +1,7 @@
 # Build directory
 dist
 prisma/migrations
+covergae
 
 # Logs
 logs
