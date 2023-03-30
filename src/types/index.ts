@@ -3,3 +3,10 @@ export type UserType = {
   username: string;
   password: string;
 };
+
+export type TokenList = {
+  [key: string]: {
+    expiredIn?: number;
+    refreshToken?: string;
+  };
+};
