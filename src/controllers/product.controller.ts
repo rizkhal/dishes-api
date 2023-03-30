@@ -1,7 +1,5 @@
 import { Request, Response } from "express";
-import { PrismaClient } from "@prisma/client";
-
-const prisma: PrismaClient = new PrismaClient();
+import prisma from "../database/client";
 
 export default {
   async index(req: Request, res: Response) {

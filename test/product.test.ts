@@ -1,5 +1,5 @@
 import request from "supertest";
-import app from "../src/server";
+import app from "../src/app";
 import { Express } from "express-serve-static-core";
 
 let server: Express;
