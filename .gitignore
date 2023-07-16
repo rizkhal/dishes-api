@@ -1,5 +1,5 @@
 # Build directory
-dist
+# dist
 prisma/migrations
 covergae
 

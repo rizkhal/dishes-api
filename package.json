@@ -8,8 +8,15 @@
     "start": "node dist/server.js",
     "watch": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\"",
     "lint": "eslint --fix src",
-    "test": "jest"
+    "test": "jest",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist"
   },
+  "pre-commit": [
+    "ts.check",
+    "build",
+    "add-build"
+  ],
   "prisma": {
     "seed": "npx ts-node dist/prisma/seed.js"
   },
@@ -56,6 +63,7 @@
     "nodemon": "^2.0.22",
     "prettier": "^2.8.7",
     "prisma": "^5.0.0",
+    "rimraf": "^5.0.1",
     "supertest": "^6.3.3",
     "ts-jest": "^29.0.5",
     "typescript": "^5.0.2"
