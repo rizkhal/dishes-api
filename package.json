@@ -4,7 +4,7 @@
   "description": "Resto Rest API",
   "main": "dist/server.js",
   "scripts": {
-    "build": "npx tsc",
+    "build": "rimraf dist && tsc",
     "start": "node dist/server.js",
     "watch": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\"",
     "lint": "eslint --fix src",
