@@ -4,19 +4,12 @@
   "description": "Resto Rest API",
   "main": "dist/server.js",
   "scripts": {
+    "build": "npx tsc",
     "start": "node dist/server.js",
     "watch": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\"",
     "lint": "eslint --fix src",
-    "test": "jest",
-    "ts.check": "tsc --project tsconfig.json",
-    "build": "rimraf dist && tsc",
-    "add-build": "git add dist"
+    "test": "jest"
   },
-  "pre-commit": [
-    "ts.check",
-    "build",
-    "add-build"
-  ],
   "prisma": {
     "seed": "npx ts-node dist/prisma/seed.js"
   },
