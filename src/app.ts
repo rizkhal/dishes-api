@@ -1,5 +1,3 @@
-import 'module-alias/register';
-
 import express, { Express } from "express";
 
 import morgan from "morgan";

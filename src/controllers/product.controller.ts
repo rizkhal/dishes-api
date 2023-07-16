@@ -57,10 +57,12 @@ export default {
         },
       });
 
-      return res.status(200).json({
+      const response = {
         message: "Prodcuct created",
         data: product,
-      });
+      };
+
+      return res.status(200).json(response);
     } catch (error) {
       return res.status(400).json({
         message: "Bad Request",

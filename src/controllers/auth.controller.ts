@@ -28,7 +28,7 @@ export default {
 
       if (user && (await bcrypt.compare(password, user.password))) {
         const token = jwt.sign({ userId: user.id, username }, process.env.JWT_TOKEN, {
-          expiresIn: process.env.TOKEN_EXPIRED_AT,
+          expiresIn: process.env.JWT_TOKEN_EXPIRED_AT,
         });
 
         const refreshToken: string = jwt.sign({ userId: user.id, username }, process.env.JWT_REFRESH_TOKEN, {
@@ -46,7 +46,7 @@ export default {
             username: user.username,
           },
           token: {
-            expiresIn: process.env.TOKEN_EXPIRED_AT,
+            expiresIn: process.env.JWT_TOKEN_EXPIRED_AT,
             accessToken: token,
             refreshToken: refreshToken,
           },
@@ -78,7 +78,7 @@ export default {
         password: user.password,
       };
 
-      const token = jwt.sign(credentials, process.env.JWT_TOKEN, { expiresIn: process.env.TOKEN_EXPIRED_AT });
+      const token = jwt.sign(credentials, process.env.JWT_TOKEN, { expiresIn: process.env.JWT_TOKEN_EXPIRED_AT });
       const refreshToken: string = jwt.sign(
         { userId: user.id, username: user.username },
         process.env.JWT_REFRESH_TOKEN,
@@ -93,7 +93,7 @@ export default {
           username: user.username,
         },
         token: {
-          expiresIn: process.env.TOKEN_EXPIRED_AT,
+          expiresIn: process.env.JWT_TOKEN_EXPIRED_AT,
           accessToken: token,
           refreshToken: refreshToken,
         },

@@ -9,8 +9,8 @@ declare global {
       // jwt
       JWT_TOKEN: string;
       JWT_REFRESH_TOKEN: string;
-      TOKEN_EXPIRED_AT: string;
-      JWT_REFRESH_TOKEN_EXPIRED_AT: string;
+      JWT_TOKEN_EXPIRED_AT: number;
+      JWT_REFRESH_JWT_TOKEN_EXPIRED_AT: number;
     }
   }
 }

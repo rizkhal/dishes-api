@@ -11,7 +11,7 @@ export default (req: Request, res: Response, next: NextFunction) => {
   }
 
   try {
-    const decoded = jwt.verify(token[1], process.env.TOKEN_KEY);
+    const decoded = jwt.verify(token[1], process.env.JWT_TOKEN);
     console.log(decoded);
   } catch (err) {
     return res.status(401).json({
